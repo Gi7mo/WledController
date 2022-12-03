@@ -1,0 +1,159 @@
+
+(rules PCB led-controller
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (app.freerouting.autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 6)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 3.6)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.4)
+    )
+  )
+  (rule
+    (width 250.0)
+    (clear 200.2)
+    (clear 125.0 (type smd_to_turn_gap))
+    (clear 500.2 (type default_AC))
+    (clear 50.0 (type smd_smd))
+    (clear 500.2 (type smd_AC))
+    (clear 500.2 (type "kicad_default"_AC))
+    (clear 500.2 (type 5v_AC))
+    (clear 500.2 (type AC_AC))
+  )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (padstack "Via[0-1]_3200:1600_um"
+    (shape
+      (circle F.Cu 3200.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 3200.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (padstack "Via[0-1]_16000:8000_um"
+    (shape
+      (circle F.Cu 16000.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 16000.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
+    "Via[0-1]_3200:1600_um" "Via[0-1]_3200:1600_um" default
+  )
+  (via 
+    "Via[0-1]_16000:8000_um" "Via[0-1]_16000:8000_um" default
+  )
+  (via 
+    "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_3200:1600_um-kicad_default" "Via[0-1]_3200:1600_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_16000:8000_um-kicad_default" "Via[0-1]_16000:8000_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_800:400_um-5v" "Via[0-1]_800:400_um" 5v
+  )
+  (via 
+    "Via[0-1]_3200:1600_um-5v" "Via[0-1]_3200:1600_um" 5v
+  )
+  (via 
+    "Via[0-1]_16000:8000_um-5v" "Via[0-1]_16000:8000_um" 5v
+  )
+  (via 
+    "Via[0-1]_800:400_um-AC" "Via[0-1]_800:400_um" AC
+  )
+  (via 
+    "Via[0-1]_3200:1600_um-AC" "Via[0-1]_3200:1600_um" AC
+  )
+  (via 
+    "Via[0-1]_16000:8000_um-AC" "Via[0-1]_16000:8000_um" AC
+  )
+  (via_rule
+    default "Via[0-1]_800:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_800:400_um-kicad_default"
+  )
+  (via_rule
+    5v "Via[0-1]_3200:1600_um-5v"
+  )
+  (via_rule
+    AC "Via[0-1]_16000:8000_um-AC"
+  )
+  (class default
+    GND "Net-(J2-Pad2)" +3V3 "Net-(R1-Pad2)" "Net-(R2-Pad2)" "Net-(R3-Pad2)" "Net-(R4-Pad2)" "Net-(Q1-Pad2)"
+    "Net-(R6-Pad1)" TX RX "unconnected-(U3-Pad2)" "unconnected-(U3-Pad5)" "unconnected-(U3-Pad7)" "unconnected-(U3-Pad19)" "unconnected-(U3-Pad20)"
+    "unconnected-(U3-Pad9)" "unconnected-(U3-Pad10)" "unconnected-(U3-Pad11)" "unconnected-(U3-Pad12)" "unconnected-(U3-Pad13)" "unconnected-(U3-Pad14)"
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class 5v
+    +5V
+    (clearance_class 5v)
+    (via_rule 5v)
+    (rule
+      (width 1000.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class AC
+    "Net-(J1-Pad1)" "Net-(J1-Pad2)"
+    (clearance_class AC)
+    (via_rule AC)
+    (rule
+      (width 5000.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)
